@@ -1,0 +1,95 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "9cf84550",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def get_playlist_tracks(username, playlist_id):\n",
+    "    results = sp.user_playlist_tracks(username,playlist_id,market=\"GB\")\n",
+    "    tracks = results['items']\n",
+    "    while results['next']:\n",
+    "        results = sp.next(results)\n",
+    "        tracks.extend(results['items'])\n",
+    "    return tracks"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "010f982f",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def play_song(track_id):\n",
+    "    return IFrame(src=\"https://open.spotify.com/embed/track/\"+track_id,\n",
+    "       width=\"320\",\n",
+    "       height=\"80\",\n",
+    "       frameborder=\"0\",\n",
+    "       allowtransparency=\"true\",\n",
+    "       allow=\"encrypted-media\",\n",
+    "      )"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "bf4914dd",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def load(filename = \"filename.pickle\"): \n",
+    "    try: \n",
+    "        with open(filename, \"rb\") as f: \n",
+    "            return pickle.load(f) \n",
+    "        \n",
+    "    except FileNotFoundError: \n",
+    "        print(\"File not found!\") "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "09c7823d",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.12"
+  },
+  "toc": {
+   "base_numbering": 1,
+   "nav_menu": {},
+   "number_sections": true,
+   "sideBar": true,
+   "skip_h1_title": false,
+   "title_cell": "Table of Contents",
+   "title_sidebar": "Contents",
+   "toc_cell": false,
+   "toc_position": {},
+   "toc_section_display": true,
+   "toc_window_display": false
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
