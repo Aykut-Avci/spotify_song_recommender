@@ -1,2 +1,2 @@
-# spotify_song_recommender_project
+# spotify_song_recommender
 Spotify Project
